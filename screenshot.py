@@ -34,11 +34,7 @@ def __setupDriver(url: str):
     options = webdriver.FirefoxOptions()
     options.headless = False
     options.enable_mobile = False
-
-    # firefox_capabilities = DesiredCapabilities.FIREFOX
-    # firefox_capabilities['marionette'] = True
-    # firefox_capabilities['binary'] = '/usr/bin/firefox'
-
+    
     driver = webdriver.Firefox(options=options, executable_path=GeckoDriverManager().install())
     wait = WebDriverWait(driver, 10)
 
