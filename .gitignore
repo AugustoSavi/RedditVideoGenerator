@@ -10,3 +10,9 @@ pyvenv.cfg
 client_secrets.json
 geckodriver.log
 config.ini
+
+# mantendo os gitkeep para que as outras pessoas não fiquem presa nessa etapa
+!BackgroundVideos/.gitkeep
+!OutputVideos/.gitkeep
+!Screenshots/.gitkeep
+!Voiceovers/.gitkeep

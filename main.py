@@ -65,7 +65,7 @@ def createVideo():
     outputFile = f"{outputDir}/{fileName}.mp4"
     final.write_videofile(
         outputFile, 
-        codec = 'mpeg4',
+        codec = 'libx264',
         threads = threads, 
         bitrate = bitrate
     )
