@@ -1,10 +1,11 @@
-import pyttsx3
+import pathlib
+from TTS.api import TTS
 
-voiceoverDir = "Voiceovers"
+voiceoverDir = "{0}/Voiceovers".format(pathlib.Path().resolve())
+
+tts = TTS(model_name="tts_models/pt/cv/vits", progress_bar=True, gpu=False)
 
 def create_voice_over(fileName, text):
     filePath = f"{voiceoverDir}/{fileName}.mp3"
-    engine = pyttsx3.init()
-    engine.save_to_file(text, filePath)
-    engine.runAndWait()
+    tts.tts_to_file(text=text,file_path=filePath)
     return filePath

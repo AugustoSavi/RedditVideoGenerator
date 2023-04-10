@@ -1,18 +1,17 @@
-import os
-import re
-import praw
-import markdown_to_text
-import time
 from videoscript import VideoScript
+import os, re, praw, markdown_to_text, time, configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 # Configuration variables
-CLIENT_ID = "YOUR_CLIENT_ID_HERE"
-CLIENT_SECRET = "YOUR_CLIENT_SECRET_HERE"
-USER_AGENT = "YOUR_USER_AGENT_HERE" 
+CLIENT_ID = config["Reddit"]["CLIENT_ID"]
+CLIENT_SECRET = config["Reddit"]["CLIENT_SECRET"]
+USER_AGENT = config["Reddit"]["USER_AGENT"]
 # user_agent sounds scary, but it's just a string to identify what your using it for
 # It's common courtesy to use something like <platform>:<name>:<version> by <your name>
 # ex. "Window11:TestApp:v0.1 by u/Shifty-The-Dev"
-SUBREDDIT = "askreddit"
+SUBREDDIT = "brdev"
 
 REDDIT_URL = "https://www.reddit.com/"
 

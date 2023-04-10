@@ -1,7 +1,10 @@
+import pathlib
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 
 # Config
 screenshotDir = "Screenshots"
@@ -31,7 +34,12 @@ def __setupDriver(url: str):
     options = webdriver.FirefoxOptions()
     options.headless = False
     options.enable_mobile = False
-    driver = webdriver.Firefox(options=options)
+
+    firefox_capabilities = DesiredCapabilities.FIREFOX
+    firefox_capabilities['marionette'] = True
+    firefox_capabilities['binary'] = '/usr/bin/firefox'
+
+    driver = webdriver.Firefox(options=options, capabilities=firefox_capabilities)
     wait = WebDriverWait(driver, 10)
 
     driver.set_window_size(width=screenWidth, height=screenHeight)
