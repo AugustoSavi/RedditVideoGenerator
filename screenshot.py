@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
+from webdriver_manager.firefox import GeckoDriverManager
 
 # Config
 screenshotDir = "Screenshots"
@@ -35,11 +35,11 @@ def __setupDriver(url: str):
     options.headless = False
     options.enable_mobile = False
 
-    firefox_capabilities = DesiredCapabilities.FIREFOX
-    firefox_capabilities['marionette'] = True
-    firefox_capabilities['binary'] = '/usr/bin/firefox'
+    # firefox_capabilities = DesiredCapabilities.FIREFOX
+    # firefox_capabilities['marionette'] = True
+    # firefox_capabilities['binary'] = '/usr/bin/firefox'
 
-    driver = webdriver.Firefox(options=options, capabilities=firefox_capabilities)
+    driver = webdriver.Firefox(options=options, executable_path=GeckoDriverManager().install())
     wait = WebDriverWait(driver, 10)
 
     driver.set_window_size(width=screenWidth, height=screenHeight)
